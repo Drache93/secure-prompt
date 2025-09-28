@@ -1,6 +1,6 @@
 const net = require('net')
 const process = require('process')
-const { TTY, isTTY } = process.binding('tty_wrap')
+const { ReadStream, isTTY } = require('tty')
 const sodium = require('sodium-native')
 
 let doPrompt = null
@@ -13,7 +13,7 @@ module.exports = function prompt () {
 function init () {
   const fd = 0
   const ctx = {}
-  const tty = new TTY(fd, ctx)
+  const tty = new ReadStream(fd, ctx)
   const tmp = sodium.sodium_malloc(4096)
   const useRaw = isTTY(fd)
 
