@@ -1,4 +1,5 @@
 const net = require('net')
+const process = require('process')
 const { TTY, isTTY } = process.binding('tty_wrap')
 const sodium = require('sodium-native')
 
